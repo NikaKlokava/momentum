@@ -70,11 +70,11 @@ input {
 }
 
 .button-slide.previous {
-  background-image: url("../momentum/assets/slider-prev.svg");
+  background-image: url("../momentum/assets/svg/slider-prev.svg");
 }
 
 .button-slide.next {
-  background-image: url("../momentum/assets/slider-next.svg");
+  background-image: url("../momentum/assets/svg/slider-next.svg");
 }
 
 .main__container {
