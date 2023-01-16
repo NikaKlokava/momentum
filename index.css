@@ -1,9 +1,9 @@
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
   height: 100%;
@@ -14,18 +14,77 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
   height: 100%;
- 
   background-image: url("https://raw.githubusercontent.com/NikaKlokava/stage1-tasks/assets/images/morning/04.jpg");
   background-size: cover;
+  margin: 20px;
 }
+
 main {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+p,
+.date,
+.time,
+input {
+  font-family: Nunito, sans-serif;
+  color: aliceblue;
 }
 
 p {
-  font-size: 7em;
-  text-shadow: 0px 3px 10px #20681d;
-  color: #229b1d;
+  font-size: 40px;
+}
 
+.date {
+  font-size: 2em;
+}
+
+.time {
+  /* font-size: 6.5em; */
+  font-size: 100px;
+  font-weight: 700;
+}
+
+input {
+  font-size: 40px;
+  max-width: 40%;
+  border: none;
+  background-color: inherit;
+  padding: 10px;
+  outline: 0;
+}
+
+/************************************        main              *****************************************/
+.button-slide {
+  width: 40px;
+  height: 40px;
+  align-self: center;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.button-slide:hover {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.button-slide.previous {
+  background-image: url("../momentum/assets/slider-prev.svg");
+}
+
+.button-slide.next {
+  background-image: url("../momentum/assets/slider-next.svg");
+}
+
+.main__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main__container__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
