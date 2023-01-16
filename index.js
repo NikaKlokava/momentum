@@ -44,9 +44,8 @@ function getCurrentDayPeriod() {
   }
   if (currentHours > 18 && currentHours <= 22) {
     return DAY_PERIOD_EVENING;
-  } else {
-    return DAY_PERIOD_NIGHT;
   }
+  return DAY_PERIOD_NIGHT;
 }
 
 function handleDayPeriodHasChanged() {
@@ -54,22 +53,18 @@ function handleDayPeriodHasChanged() {
 }
 
 function addDateTimeListener() {
-  let formattedTime;
-  let formattedDate;
-  let formattedPeriod;
-
   initializeLocale();
   setInterval(() => {
-    formattedTime = getCurrentTime();
-    formattedDate = getCurrentDayPeriod();
-    formattedPeriod = getCurrentDate();
-    // console.log({formattedTime, formattedDate, formattedPeriod})
-  }, 1000);
+    let formattedTime = getCurrentTime();
+    let formattedDate = getCurrentDayPeriod();
+    let formattedPeriod = getCurrentDate();
 
-  if (currentDayPeriod != formattedPeriod) {
-    currentDayPeriod = formattedPeriod;
-    handleDayPeriodHasChanged();
-  }
+    if (currentDayPeriod != formattedPeriod) {
+      currentDayPeriod = formattedPeriod;
+      handleDayPeriodHasChanged();
+    }
+    // console.log({formattedTime, formattedDate, formattedPeriod})
+  }, 500);
 }
 
 function onDOMContentLoaded() {
