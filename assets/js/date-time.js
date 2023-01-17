@@ -67,11 +67,11 @@ function addDateTimeListener() {
   }, 500);
 }
 
-function onDOMContentLoaded() {
-  addDateTimeListener();
-  console.log(getCurrentTime());
-  console.log(getCurrentDate());
-  console.log(getCurrentDayPeriod());
-}
+// function onDOMContentLoaded() {
+//   addDateTimeListener();
+//   console.log(getCurrentTime());
+//   console.log(getCurrentDate());
+//   console.log(getCurrentDayPeriod());
+// }
 
-document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+// document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
