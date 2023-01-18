@@ -2,15 +2,12 @@ const DAY_PERIOD_MORNING = "morning";
 const DAY_PERIOD_AFTERNOON = "afternoon";
 const DAY_PERIOD_EVENING = "evening";
 const DAY_PERIOD_NIGHT = "night";
-
-let dayPeriod = document.getElementById("day-period");
-let date = document.getElementById('date');
+const maxImageCount = 20;
 
 let currentDayPeriod;
 let initialLocale;
 
-let currentImageIndex = 1;
-const maxImageCount = 20;
+let currentImageIndex = randomImageIndex(1, maxImageCount);
 
 function initializeLocale() {
   initialLocale =
@@ -43,27 +40,31 @@ function getCurrentDayPeriod() {
   const now = new Date();
   const currentHours = now.getHours();
   if (currentHours > 5 && currentHours <= 12) {
-    return (currentDayPeriod = DAY_PERIOD_MORNING);
+    return DAY_PERIOD_MORNING;
   }
   if (currentHours > 12 && currentHours <= 18) {
-    return (currentDayPeriod = DAY_PERIOD_AFTERNOON);
+    return DAY_PERIOD_AFTERNOON;
   }
   if (currentHours > 18 && currentHours <= 22) {
-    return (currentDayPeriod = DAY_PERIOD_EVENING);
+    return DAY_PERIOD_EVENING;
   }
-  return (currentDayPeriod = DAY_PERIOD_NIGHT);
+  return DAY_PERIOD_NIGHT;
 }
 
 function handleDayPeriodHasChanged() {
+  const dayPeriod = document.getElementById("day-period");
+
   dayPeriod.textContent = currentDayPeriod;
   updateBackgroundImage();
 }
 
 function addDateTimeListener() {
-  const date = document.getElementById('date');
-  const time = document.getElementById('time');
-  // initializeLocale();
-  setInterval(() => {
+  initializeLocale();
+
+  const date = document.getElementById("date");
+  const time = document.getElementById("time");
+
+  const tick = () => {
     time.innerHTML = getCurrentTime();
     date.innerHTML = getCurrentDate();
     const formattedPeriod = getCurrentDayPeriod();
@@ -71,27 +72,27 @@ function addDateTimeListener() {
       currentDayPeriod = formattedPeriod;
       handleDayPeriodHasChanged();
     }
-  }, 500);
+  };
+
+  tick();
+  setInterval(tick, 900);
 }
 
 function randomImageIndex(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  let randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
-  if (randomValue >= 1 && randomValue < 10) {
-    return (currentImageIndex = "0" + randomValue);
-  }
-  return (currentImageIndex = randomValue);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function updateBackgroundImage() {
   const body = document.getElementById("body");
-  const imgUrl = `https://raw.githubusercontent.com/NikaKlokava/stage1-tasks/assets/images/${currentDayPeriod}/${currentImageIndex}.jpg`;
+
+  const prefix = currentImageIndex < 10 ? "0" : "";
+  const imgUrl = `https://raw.githubusercontent.com/NikaKlokava/stage1-tasks/assets/images/${currentDayPeriod}/${prefix}${currentImageIndex}.jpg`;
+
   const img = new Image();
   img.src = imgUrl;
-  let imageAttrLink = img.getAttribute("src");
+
   img.onload = () => {
-    body.style.backgroundImage = `url(${imageAttrLink})`;
+    body.style.backgroundImage = `url(${img.getAttribute("src")})`;
   };
 
   // (async function () {
@@ -106,30 +107,15 @@ function updateBackgroundImage() {
 }
 
 function handlePrevArrowClick() {
-  if (currentImageIndex == 1) {
-    currentImageIndex = maxImageCount;
-  } else if (currentImageIndex >= 2) {
-    currentImageIndex--;
-  }
   currentImageIndex =
-    currentImageIndex >= 1 && currentImageIndex < 10
-      ? "0" + currentImageIndex
-      : currentImageIndex;
+    currentImageIndex == 1 ? maxImageCount : currentImageIndex - 1;
 
   updateBackgroundImage();
 }
 
 function handleNextArrowClick() {
-  if (currentImageIndex === maxImageCount) {
-    currentImageIndex = 1;
-  } else if (currentImageIndex >= 1) {
-    currentImageIndex++;
-  }
-
   currentImageIndex =
-    currentImageIndex >= 1 && currentImageIndex < 10
-      ? "0" + currentImageIndex
-      : currentImageIndex;
+    currentImageIndex === maxImageCount ? 1 : currentImageIndex + 1;
 
   updateBackgroundImage();
 }
@@ -144,9 +130,6 @@ function addArrowHandlers() {
 function onDOMContentLoaded() {
   addDateTimeListener();
   addArrowHandlers();
-  getCurrentDayPeriod();
-  randomImageIndex(currentImageIndex, maxImageCount);
-  updateBackgroundImage();
 }
 
 document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
