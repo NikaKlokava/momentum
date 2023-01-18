@@ -3,6 +3,9 @@ const DAY_PERIOD_AFTERNOON = "afternoon";
 const DAY_PERIOD_EVENING = "evening";
 const DAY_PERIOD_NIGHT = "night";
 
+let dayPeriod = document.getElementById("day-period");
+let date = document.getElementById('date');
+
 let currentDayPeriod;
 let initialLocale;
 
@@ -52,19 +55,18 @@ function getCurrentDayPeriod() {
 }
 
 function handleDayPeriodHasChanged() {
-  currentImageIndex = 1;
+  dayPeriod.textContent = currentDayPeriod;
   updateBackgroundImage();
-  const dayPeriod = document.getElementById("day-period");
-  dayPeriod.textContent = DAY_PERIOD_NIGHT;
 }
 
 function addDateTimeListener() {
-  initializeLocale();
+  const date = document.getElementById('date');
+  const time = document.getElementById('time');
+  // initializeLocale();
   setInterval(() => {
-    getCurrentTime();
-    getCurrentDate();
+    time.innerHTML = getCurrentTime();
+    date.innerHTML = getCurrentDate();
     const formattedPeriod = getCurrentDayPeriod();
-
     if (currentDayPeriod != formattedPeriod) {
       currentDayPeriod = formattedPeriod;
       handleDayPeriodHasChanged();
