@@ -2,12 +2,12 @@ const DAY_PERIOD_MORNING = "morning";
 const DAY_PERIOD_AFTERNOON = "afternoon";
 const DAY_PERIOD_EVENING = "evening";
 const DAY_PERIOD_NIGHT = "night";
-const maxImageCount = 20;
+const MAX_IMAGE_COUNT = 20;
 
 let currentDayPeriod;
 let initialLocale;
 
-let currentImageIndex = randomImageIndex(1, maxImageCount);
+let currentImageIndex = randomImageIndex(1, MAX_IMAGE_COUNT);
 
 function initializeLocale() {
   initialLocale =
@@ -22,6 +22,7 @@ function getCurrentTime() {
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
+    hour12: false
   };
   return date.toLocaleString(initialLocale, options);
 }
@@ -102,20 +103,20 @@ function updateBackgroundImage() {
   //     reader.onload = () => resolve(reader.result);
   //     reader.readAsDataURL(blob);
   //   });
-  //   body.style.backgroundImage = `url(${dataUrl})`
+  //   body.style.backgroundImage = `url(${dataUrl})`;
   // })();
 }
 
 function handlePrevArrowClick() {
   currentImageIndex =
-    currentImageIndex == 1 ? maxImageCount : currentImageIndex - 1;
+    currentImageIndex == 1 ? MAX_IMAGE_COUNT : currentImageIndex - 1;
 
   updateBackgroundImage();
 }
 
 function handleNextArrowClick() {
   currentImageIndex =
-    currentImageIndex === maxImageCount ? 1 : currentImageIndex + 1;
+    currentImageIndex === MAX_IMAGE_COUNT ? 1 : currentImageIndex + 1;
 
   updateBackgroundImage();
 }
