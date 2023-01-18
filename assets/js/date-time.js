@@ -2,9 +2,12 @@ const DAY_PERIOD_MORNING = "morning";
 const DAY_PERIOD_AFTERNOON = "afternoon";
 const DAY_PERIOD_EVENING = "evening";
 const DAY_PERIOD_NIGHT = "night";
+const MAX_IMAGE_COUNT = 20;
 
 let currentDayPeriod;
 let initialLocale;
+
+let currentImageIndex = randomImageIndex(1, MAX_IMAGE_COUNT);
 
 function initializeLocale() {
   initialLocale =
@@ -19,6 +22,7 @@ function getCurrentTime() {
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
+    hour12: false
   };
   return date.toLocaleString(initialLocale, options);
 }
@@ -49,29 +53,84 @@ function getCurrentDayPeriod() {
 }
 
 function handleDayPeriodHasChanged() {
-  console.log(`Day period has changed! New day period is ${currentDayPeriod}!`);
+  const dayPeriod = document.getElementById("day-period");
+
+  dayPeriod.textContent = currentDayPeriod;
+  updateBackgroundImage();
 }
 
 function addDateTimeListener() {
   initializeLocale();
-  setInterval(() => {
-    const formattedTime = getCurrentTime();
-    const formattedDate = getCurrentDayPeriod();
-    const formattedPeriod = getCurrentDate();
 
+  const date = document.getElementById("date");
+  const time = document.getElementById("time");
+
+  const tick = () => {
+    time.innerHTML = getCurrentTime();
+    date.innerHTML = getCurrentDate();
+    const formattedPeriod = getCurrentDayPeriod();
     if (currentDayPeriod != formattedPeriod) {
       currentDayPeriod = formattedPeriod;
       handleDayPeriodHasChanged();
     }
-    // console.log({formattedTime, formattedDate, formattedPeriod})
-  }, 500);
+  };
+
+  tick();
+  setInterval(tick, 900);
 }
 
-// function onDOMContentLoaded() {
-//   addDateTimeListener();
-//   console.log(getCurrentTime());
-//   console.log(getCurrentDate());
-//   console.log(getCurrentDayPeriod());
-// }
+function randomImageIndex(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-// document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+function updateBackgroundImage() {
+  const body = document.getElementById("body");
+
+  const prefix = currentImageIndex < 10 ? "0" : "";
+  const imgUrl = `https://raw.githubusercontent.com/NikaKlokava/stage1-tasks/assets/images/${currentDayPeriod}/${prefix}${currentImageIndex}.jpg`;
+
+  const img = new Image();
+  img.src = imgUrl;
+
+  img.onload = () => {
+    body.style.backgroundImage = `url(${img.getAttribute("src")})`;
+  };
+
+  // (async function () {
+  //   let blob = await fetch(imgUrl).then((r) => r.blob());
+  //   let dataUrl = await new Promise((resolve) => {
+  //     let reader = new FileReader();
+  //     reader.onload = () => resolve(reader.result);
+  //     reader.readAsDataURL(blob);
+  //   });
+  //   body.style.backgroundImage = `url(${dataUrl})`;
+  // })();
+}
+
+function handlePrevArrowClick() {
+  currentImageIndex =
+    currentImageIndex == 1 ? MAX_IMAGE_COUNT : currentImageIndex - 1;
+
+  updateBackgroundImage();
+}
+
+function handleNextArrowClick() {
+  currentImageIndex =
+    currentImageIndex === MAX_IMAGE_COUNT ? 1 : currentImageIndex + 1;
+
+  updateBackgroundImage();
+}
+
+function addArrowHandlers() {
+  const previousArrowEl = document.getElementById("previous-arrow");
+  const nextArrowEl = document.getElementById("next-arrow");
+  previousArrowEl.onclick = handlePrevArrowClick;
+  nextArrowEl.onclick = handleNextArrowClick;
+}
+
+function onDOMContentLoaded() {
+  addDateTimeListener();
+  addArrowHandlers();
+}
+
+document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
