@@ -1,0 +1,73 @@
+.date {
+  font-size: 24px;
+  line-height: 50px;
+}
+
+.time {
+  font-size: 100px;
+  font-weight: 700;
+}
+
+input.name {
+  font-size: 40px;
+  max-width: 40%;
+  padding: 10px;
+}
+
+.button-slide {
+  width: 40px;
+  height: 40px;
+  align-self: center;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.button-slide:hover {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.button-slide.previous {
+  background-image: url("../svg/slider-prev.svg");
+}
+
+.button-slide.next {
+  background-image: url("../svg/slider-next.svg");
+}
+
+.main__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main__container__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width:768px) {
+  .date {
+    font-size: 20px;
+    line-height: 40px;
+  }
+
+  .time {
+    font-size: 75px
+  }
+
+}
+
+@media screen and (max-width:555px) {
+
+  .date {
+    font-size: 16px;
+    line-height: 40px;
+  }
+
+  .time {
+    font-size: 55px
+  }
+
+}

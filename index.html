@@ -6,14 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-  <link href="index.css" rel="stylesheet">
+  <link href="assets/css/header.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
   <script src="assets/js/date-time.js"></script>
   <script src="assets/js/user-name.js"></script>
   <title>Momentum</title>
 </head>
 
 <body id="body">
-  <header></header>
+  <header>
+    <div class="player">
+      <div class="player-progress-bar">
+        <div class="track">Lalala lala lala</div>
+        <input type="range" class="track-progress" value="0" min="0" max="100" step="1">
+        <div class="time-progress">0:00 / 0:01</div>
+      </div>
+      <div class="player-buttons">
+        <button class="button prev-track"></button>
+        <button class="button play-track"></button>
+        <button class="button next-track"></button>
+      </div>
+      <div class="player-volume">
+        <button class="button volume-ico1"></button>
+        <input type="range" class="volume-progress" value="0" min="0" max="100" step="1">
+        <button class="button volume-ico2"></button>
+      </div>
+      <div class="player-tracks">
+        <p class="track-item">First track</p>
+        <p class="track-item">Second track</p>
+        <p class="track-item">Third track</p>
+        <p class="track-item">Fourth track</p>
+      </div>
+    </div>
+    <div class="weather">
+      <input type="text" class="weather-city" placeholder="[Enter city]">
+      <i class="weather-icon"></i>
+      <div class="weather-error"></div>
+      <div class="weather-description">
+        <span class="temperature">2°C</span>
+        <span class="description">heavy intensity rain</span>
+      </div>
+      <div class="weather-wind">Wind speed: 2 m/s</div>
+      <div class="humidity">Humidity: 81%</div>
+    </div>
+  </header>
   <main>
     <div class="button-slide previous" id="previous-arrow"></div>
     <div class="main__container">
