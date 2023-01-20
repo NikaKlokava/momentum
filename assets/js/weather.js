@@ -1,13 +1,14 @@
 const LOCAL_STORAGE_CITY_KEY = "current_user_city";
 const API_KEY = "c1dc057239a59ed2b788017a79717d9e";
+const DEFAULT_CITY = 'Minsk'
 
 function getCity() {
-  if (localStorage.getItem(LOCAL_STORAGE_CITY_KEY)) {
-    return localStorage.getItem(LOCAL_STORAGE_CITY_KEY);
+  const cityFromLocalStorage = localStorage.getItem(LOCAL_STORAGE_CITY_KEY)
+  if (cityFromLocalStorage) {
+    return cityFromLocalStorage;
   } else {
-    const cityMinsk = "Brest";
-    setCity(cityMinsk);
-    return cityMinsk;
+    setCity(DEFAULT_CITY);
+    return DEFAULT_CITY;
   }
 }
 
@@ -43,40 +44,10 @@ function handleCitySubmitted() {
 }
 
 function onDOMContentLoaded() {
-  setCity("");
   const city = getCity();
   loadWeather(city);
 }
 document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
-
-
-//
-//
-//
-
-const myPromise = new Promise((resolve, reject) => {
-  try {
-    if (1 == 2) {
-      resolve("yes");
-    } else {
-      resolve("no");
-    }
-  } catch (err) {
-    reject(err);
-  }
-});
-
-async function myPromise2() {
-  try {
-    if (1 == 2) {
-      return "yes";
-    } else {
-      return "no";
-    }
-  } catch (err) {
-    throw err;
-  }
-}
 
 // async function onDOMContentLoaded() {
 //   myPromise2()
