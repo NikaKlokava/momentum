@@ -12,6 +12,7 @@
   <script src="assets/js/date-time.js"></script>
   <script src="assets/js/user-name.js"></script>
   <script src="assets/js/weather.js"></script>
+  <script src="assets/js/player.js"></script>
   <title>Momentum</title>
 </head>
 
@@ -19,25 +20,21 @@
   <header>
     <div class="player">
       <div class="player-progress-bar">
-        <div class="track">Lalala lala lala</div>
+        <div class="track" id="current-track">Lalala lala lala</div>
         <input type="range" class="track-progress" value="0" min="0" max="100" step="1">
         <div class="time-progress">0:00 / 0:01</div>
       </div>
       <div class="player-buttons">
-        <button class="button prev-track"></button>
-        <button class="button play-track"></button>
-        <button class="button next-track"></button>
+        <button class="button prev-track" id="previous-button"></button>
+        <button class="button play-track" id="play"></button>
+        <button class="button next-track" id="next-button"></button>
       </div>
       <div class="player-volume">
         <button class="button volume-ico1"></button>
         <input type="range" class="volume-progress" value="0" min="0" max="100" step="1">
         <button class="button volume-ico2"></button>
       </div>
-      <div class="player-tracks">
-        <p class="track-item">First track</p>
-        <p class="track-item">Second track</p>
-        <p class="track-item">Third track</p>
-        <p class="track-item">Fourth track</p>
+      <div class="player-tracks" id="player-tracks">
       </div>
     </div>
     <div class="weather">
