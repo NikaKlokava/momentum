@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/owfont-regular.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <link href="assets/css/header.css" rel="stylesheet">
@@ -41,15 +42,15 @@
       </div>
     </div>
     <div class="weather">
-      <input type="text" class="weather-city" id= "weather-city" placeholder="[Enter city]">
-      <i class="weather-icon error"></i>
-      <div class="weather-error" id="weather-error"></div>
-      <div class="weather-description error">
-        <span class="temperature" id="temp">2°C</span>
+      <input type="text" class="weather-city" id="weather-city" placeholder="[Enter city]">
+      <i class="weather-icon weather-data display-none" id="icon"></i>
+      <div class="weather-error display-none" id="weather-error"></div>
+      <div class="weather-description weather-data display-none">
+        <span class="temperature" id="temp"></span>
         <span class="description" id="weather-description">heavy intensity rain</span>
       </div>
-      <div class="weather-wind error">Wind speed: <span id="wind">5</span> m/s</div>
-      <div class="humidity error">Humidity: <span id="humidity">81</span>%</div>
+      <div class="weather-wind weather-data display-none">Wind speed: <span id="wind"></span> m/s</div>
+      <div class="humidity weather-data display-none">Humidity: <span id="humidity"></span>%</div>
     </div>
   </header>
   <main>

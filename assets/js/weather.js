@@ -2,6 +2,12 @@ const LOCAL_STORAGE_CITY_KEY = "current_user_city";
 const API_KEY = "c1dc057239a59ed2b788017a79717d9e";
 const DEFAULT_CITY = "Minsk";
 
+const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather";
+
+function setCity(city) {
+  localStorage.setItem(LOCAL_STORAGE_CITY_KEY, city);
+}
+
 function getCity() {
   const cityFromLocalStorage = localStorage.getItem(LOCAL_STORAGE_CITY_KEY);
   if (cityFromLocalStorage) {
@@ -12,12 +18,8 @@ function getCity() {
   }
 }
 
-function setCity(city) {
-  localStorage.setItem(LOCAL_STORAGE_CITY_KEY, city);
-}
-
 async function loadWeather(city) {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${API_KEY}&units=metric`;
+  const url = `${WEATHER_API_URL}?q=${city}&lang=en&appid=${API_KEY}&units=metric`;
   try {
     const promise = await fetch(url);
     const data = await promise.json();
@@ -26,50 +28,69 @@ async function loadWeather(city) {
     } else {
       onWeatherLoadFailed(city);
     }
-  } catch {
-    console.log("Error!!!");
+  } catch (err) {
+    console.log("Error while loading weather", err);
   }
 }
 
 function onWeatherLoadSuccess(city, data) {
-  const temperatureEl = document.getElementById("temp");
-  const weatherDescripEl = document.getElementById("weather-description");
-  const windEl = document.getElementById("wind");
-  const humidityEl = document.getElementById("humidity");
+  const weatherIconEl = document.getElementById("icon");
+  weatherIconEl.classList = `weather-icon owf owf-${data.weather[0].id} weather-data`;
 
+  const temperatureEl = document.getElementById("temp");
   temperatureEl.innerHTML = Math.round(data.main.temp) + "°C";
+
+  const weatherDescripEl = document.getElementById("weather-description");
   weatherDescripEl.innerHTML = data.weather[0].description;
+
+  const windEl = document.getElementById("wind");
   windEl.innerHTML = Math.round(data.wind.speed);
+
+  const humidityEl = document.getElementById("humidity");
   humidityEl.innerHTML = data.main.humidity;
+
+  const elementsIfError = document.getElementsByClassName("weather-data");
+  for (let item of elementsIfError) {
+    item.classList.remove("display-none");
+  }
+
+  const weatherErrorEl = document.getElementById("weather-error");
+  weatherErrorEl.classList.add("display-none");
+
   setCity(city);
 }
 
 function onWeatherLoadFailed(city) {
-  const elementsIfError = document.getElementsByClassName("error");
+  const elementsIfError = document.getElementsByClassName("weather-data");
   for (let item of elementsIfError) {
-    item.classList.add("no-visible");
+    item.classList.add("display-none");
   }
+
   const weatherErrorEl = document.getElementById("weather-error");
   weatherErrorEl.innerText = `Error! City not found for '${city}' !`;
-  weatherErrorEl.classList.add("visible");
+  weatherErrorEl.classList.remove("display-none");
 }
 
-function handleCitySubmitted() {
+function addHandleCitySubmitted() {
   const cityInput = document.getElementById("weather-city");
   const valueOfCityInput = cityInput.value;
   loadWeather(valueOfCityInput);
 }
 
 function onDOMContentLoaded() {
-  const city = getCity();
-  // loadWeather(city);
   const cityInput = document.getElementById("weather-city");
+  const city = getCity();
+  cityInput.value = city;
+
+  loadWeather(city);
+
   cityInput.addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
-      handleCitySubmitted();
+      addHandleCitySubmitted();
     }
   });
 }
+
 document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
 
 // async function onDOMContentLoaded() {
