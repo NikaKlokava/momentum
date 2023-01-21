@@ -41,15 +41,15 @@
       </div>
     </div>
     <div class="weather">
-      <input type="text" class="weather-city" placeholder="[Enter city]">
-      <i class="weather-icon"></i>
-      <div class="weather-error"></div>
-      <div class="weather-description">
-        <span class="temperature">2°C</span>
-        <span class="description">heavy intensity rain</span>
+      <input type="text" class="weather-city" id= "weather-city" placeholder="[Enter city]">
+      <i class="weather-icon error"></i>
+      <div class="weather-error" id="weather-error"></div>
+      <div class="weather-description error">
+        <span class="temperature" id="temp">2°C</span>
+        <span class="description" id="weather-description">heavy intensity rain</span>
       </div>
-      <div class="weather-wind">Wind speed: 2 m/s</div>
-      <div class="humidity">Humidity: 81%</div>
+      <div class="weather-wind error">Wind speed: <span id="wind">5</span> m/s</div>
+      <div class="humidity error">Humidity: <span id="humidity">81</span>%</div>
     </div>
   </header>
   <main>

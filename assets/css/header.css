@@ -29,7 +29,7 @@
   background-color: #fff;
   accent-color: #fff;
   margin-top: 5px;
-  cursor:grab;
+  cursor: grab;
 }
 
 /*** player-buttons ***/
@@ -47,6 +47,7 @@
   opacity: 0.7;
   cursor: pointer;
 }
+
 .button:hover {
   opacity: 1;
   transition: 0.5s ease-in-out;
@@ -114,6 +115,7 @@
   cursor: pointer;
   opacity: 0.8;
 }
+
 .track-item:hover {
   opacity: 1;
   text-shadow: 0px 0px 2px white;
@@ -153,7 +155,8 @@ input.weather-city {
 
 .weather-description {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  column-gap: 12px;
   margin-top: 10px;
 }
 
@@ -166,7 +169,20 @@ input.weather-city {
   line-height: 30px;
 }
 
+.weather-error.visible {
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  margin-top: 40px;
+  color: #fff;
+
+}
+
+.no-visible {
+  display: none;
+}
+
 @media screen and (max-width:555px) {
+
   /*** player ***/
   .player {
     width: 100%;

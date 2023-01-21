@@ -1,9 +1,9 @@
 const LOCAL_STORAGE_CITY_KEY = "current_user_city";
 const API_KEY = "c1dc057239a59ed2b788017a79717d9e";
-const DEFAULT_CITY = 'Minsk'
+const DEFAULT_CITY = "Minsk";
 
 function getCity() {
-  const cityFromLocalStorage = localStorage.getItem(LOCAL_STORAGE_CITY_KEY)
+  const cityFromLocalStorage = localStorage.getItem(LOCAL_STORAGE_CITY_KEY);
   if (cityFromLocalStorage) {
     return cityFromLocalStorage;
   } else {
@@ -32,20 +32,43 @@ async function loadWeather(city) {
 }
 
 function onWeatherLoadSuccess(city, data) {
-  console.log("onWeatherLoadSuccess", { data });
+  const temperatureEl = document.getElementById("temp");
+  const weatherDescripEl = document.getElementById("weather-description");
+  const windEl = document.getElementById("wind");
+  const humidityEl = document.getElementById("humidity");
+
+  temperatureEl.innerHTML = Math.round(data.main.temp) + "°C";
+  weatherDescripEl.innerHTML = data.weather[0].description;
+  windEl.innerHTML = Math.round(data.wind.speed);
+  humidityEl.innerHTML = data.main.humidity;
+  setCity(city);
 }
 
 function onWeatherLoadFailed(city) {
-  console.log("onWeatherLoadFailed", { city });
+  const elementsIfError = document.getElementsByClassName("error");
+  for (let item of elementsIfError) {
+    item.classList.add("no-visible");
+  }
+  const weatherErrorEl = document.getElementById("weather-error");
+  weatherErrorEl.innerText = `Error! City not found for '${city}' !`;
+  weatherErrorEl.classList.add("visible");
 }
 
 function handleCitySubmitted() {
-  console.log("handleCitySubmitted");
+  const cityInput = document.getElementById("weather-city");
+  const valueOfCityInput = cityInput.value;
+  loadWeather(valueOfCityInput);
 }
 
 function onDOMContentLoaded() {
   const city = getCity();
-  loadWeather(city);
+  // loadWeather(city);
+  const cityInput = document.getElementById("weather-city");
+  cityInput.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      handleCitySubmitted();
+    }
+  });
 }
 document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
 
