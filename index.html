@@ -21,9 +21,11 @@
   <header>
     <div class="player">
       <div class="player-progress-bar">
-        <div class="track" id="current-track">Lalala lala lala</div>
-        <input type="range" class="track-progress" value="0" min="0" max="100" step="1">
-        <div class="time-progress">0:00 / 0:01</div>
+        <div class="track" id="current-track">Aqua Caelestis</div>
+        <div class="track-progress">
+          <div class="track-progress-duration"></div>
+        </div>
+        <div class="time-progress"><span id="start-time">0:00</span> / <span id="current-time"></span></div>
       </div>
       <div class="player-buttons">
         <button class="button prev-track" id="previous-button"></button>
@@ -32,7 +34,7 @@
       </div>
       <div class="player-volume">
         <button class="button volume-ico1"></button>
-        <input type="range" class="volume-progress" value="0" min="0" max="100" step="1">
+        <input type="range" class="volume-progress" value="0" min="0" max="1" step="0.1">
         <button class="button volume-ico2"></button>
       </div>
       <div class="player-tracks" id="player-tracks">
