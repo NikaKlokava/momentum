@@ -15,21 +15,26 @@
 .time-progress {
   font-family: Nunito, sans-serif;
   font-size: 16px;
-  line-height: 28px;
+  line-height: 25px;
   color: #fff;
 }
 
 .time-progress {
   font-size: 10px;
+  line-height: 20px;
 }
 
-.track-progress {
-  align-self: normal;
-  border: none;
-  background-color: #fff;
+#track-progress {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
   accent-color: #fff;
-  margin-top: 5px;
-  cursor: grab;
+}
+
+.track-progress-duration {
+  width: 0%;
+  height: 100%;
+  background-color: white;
 }
 
 /*** player-buttons ***/
@@ -37,7 +42,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .button {
@@ -62,8 +67,9 @@
   height: 40px;
   background-size: 40px 40px;
   background-image: url("../svg/play.svg");
-  transition: background-image 0.4s ease-in-out;
+  transition: background-image 0.4s opacity 0.7s ease-in-out;
 }
+
 .play-track.active {
   background-image: url("../svg/pause.svg");
 }
@@ -76,7 +82,7 @@
 .player-volume {
   display: flex;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .player-volume .volume-ico1,
@@ -108,13 +114,13 @@
 
 /*** player-tracks ***/
 .player-tracks {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .track-item {
   position: relative;
   font-size: 16px;
-  line-height: 28px;
+  line-height: 25px;
   padding-left: 20px;
   cursor: pointer;
   opacity: 0.8;
@@ -122,7 +128,7 @@
 
 .track-item:hover {
   opacity: 1;
-  text-shadow: 0px 0px 2px white;
+  text-shadow: 0px 0px 5px white;
   transition: 0.5s ease-in-out;
 }
 
@@ -132,6 +138,11 @@
   left: 0;
   top: 0;
   font-weight: 900;
+}
+
+.track-item.active {
+  opacity: 1;
+  text-shadow: 0px 0px 10px white;
 }
 
 /***************************    weather   *******************************/
