@@ -18,6 +18,7 @@ footer {
 }
 
 .quote-reload:hover {
+  transform: rotate(0.5turn);
   opacity: 1;
 }
 
@@ -27,6 +28,7 @@ footer {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
+  min-height: 55px;
 }
 
 .quote,
@@ -40,12 +42,6 @@ footer {
   margin-bottom: 12px;
   text-align: center;
 }
-/* @media screen and (max-width:580px) {
-  .quote,
-  .quote-autor {
-    font-size: 12px;
-  }
-} */
 
 @media screen and (max-width:420px) {
   .quote-reload {
