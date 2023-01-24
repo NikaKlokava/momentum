@@ -22,7 +22,7 @@ function getCurrentTime() {
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
-    hour12: false
+    hour12: false,
   };
   return date.toLocaleString(initialLocale, options);
 }
