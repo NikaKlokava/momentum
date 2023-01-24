@@ -195,10 +195,11 @@ input.weather-city {
 
   /*** player ***/
   .player {
-    width: 100%;
+    width: 70%;
+    margin-bottom: 10px;
   }
 
-  .track-progress,
+  #track-progress,
   .player-volume,
   .player-buttons {
     align-self: center;
@@ -210,21 +211,24 @@ input.weather-city {
   }
 
   .player-tracks {
-    margin-top: 20px;
+    align-self: center;
   }
 
   /* weather*/
   .weather {
     width: 70%;
     order: -1;
+    margin-bottom: 10px;
   }
 
   input.weather-city {
     text-align: center;
-  }
-
-  .weather-icon {
     align-self: center;
+    width: 50%;
+  }
+  .weather-error {
+    align-self: center;
+    margin-bottom: 10px;
   }
 
   .weather-description {
