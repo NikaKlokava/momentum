@@ -1,4 +1,4 @@
-const url = "https://type.fit/api/quotes"
+const url = "https://type.fit/api/quotes";
 let dataQuotes = [];
 let currentQuoterIndex = 0;
 

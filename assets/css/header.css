@@ -226,6 +226,7 @@ input.weather-city {
     align-self: center;
     width: 50%;
   }
+
   .weather-error {
     align-self: center;
     margin-bottom: 10px;
