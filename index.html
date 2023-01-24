@@ -4,16 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/owfont-regular.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-  <link href="index.css" rel="stylesheet">
+  <link href="assets/css/header.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
   <script src="assets/js/date-time.js"></script>
   <script src="assets/js/user-name.js"></script>
+  <script src="assets/js/weather.js"></script>
+  <script src="assets/js/player.js"></script>
   <title>Momentum</title>
 </head>
 
 <body id="body">
-  <header></header>
+  <header>
+    <div class="player">
+      <div class="player-progress-bar">
+        <div class="track" id="current-track">Aqua Caelestis</div>
+        <input type="range" id="track-progress" value="0" min="0" max="1" step="0.01">
+        <div class="time-progress"><span id="start-time"></span> / <span id="current-time"></span></div>
+      </div>
+      <div class="player-buttons">
+        <button class="button prev-track" id="previous-button"></button>
+        <button class="button play-track" id="play"></button>
+        <button class="button next-track" id="next-button"></button>
+      </div>
+      <div class="player-volume">
+        <button class="button volume-ico1"></button>
+        <input type="range" class="volume-progress" value="0" min="0" max="1" step="0.1">
+        <button class="button volume-ico2"></button>
+      </div>
+      <div class="player-tracks" id="player-tracks">
+      </div>
+    </div>
+    <div class="weather">
+      <input type="text" class="weather-city" id="weather-city" placeholder="[Enter city]">
+      <i class="weather-icon weather-data display-none" id="icon"></i>
+      <div class="weather-error display-none" id="weather-error"></div>
+      <div class="weather-description weather-data display-none">
+        <span class="temperature" id="temp"></span>
+        <span class="description" id="weather-description">heavy intensity rain</span>
+      </div>
+      <div class="weather-wind weather-data display-none">Wind speed: <span id="wind"></span> m/s</div>
+      <div class="humidity weather-data display-none">Humidity: <span id="humidity"></span>%</div>
+    </div>
+  </header>
   <main>
     <div class="button-slide previous" id="previous-arrow"></div>
     <div class="main__container">

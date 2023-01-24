@@ -16,7 +16,7 @@ function handleNameChanged(event) {
 function onDOMContentLoaded() {
   const userNameEl = document.getElementById("user-name");
   userNameEl.addEventListener("input", handleNameChanged);
-
+  
   const name = getUserName();
   if (name) {
     userNameEl.value = name;

@@ -1,0 +1,237 @@
+.player {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+}
+
+/*** player-progress-bar ***/
+.player-progress-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.track,
+.time-progress {
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  line-height: 25px;
+  color: #fff;
+}
+
+.time-progress {
+  font-size: 10px;
+  line-height: 20px;
+}
+
+#track-progress {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  accent-color: #fff;
+}
+
+.track-progress-duration {
+  width: 0%;
+  height: 100%;
+  background-color: white;
+}
+
+/*** player-buttons ***/
+.player-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+}
+
+.player-buttons .prev-track {
+  background-image: url("../svg/play-prev.svg");
+}
+
+.player-buttons .play-track {
+  width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
+  background-image: url("../svg/play.svg");
+  transition: background-image 0.4s opacity 0.7s ease-in-out;
+}
+
+.play-track.active {
+  background-image: url("../svg/pause.svg");
+}
+
+.player-buttons .next-track {
+  background-image: url("../svg/play-next.svg");
+}
+
+/*** player-volume ***/
+.player-volume {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.player-volume .volume-ico1,
+.player-volume .volume-ico2 {
+  width: 10px;
+  height: 10px;
+  background-size: 10px 10px;
+  cursor: pointer;
+}
+
+.player-volume .volume-ico1 {
+  background-image: url("../svg/volume-no.svg");
+}
+
+.player-volume .volume-ico2 {
+  background-image: url("../svg/volume.svg");
+}
+
+.volume-progress {
+  align-self: center;
+  width: 100%;
+  height: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #fff;
+  accent-color: #fff;
+  cursor: pointer;
+}
+
+/*** player-tracks ***/
+.player-tracks {
+  margin-top: 5px;
+}
+
+.track-item {
+  position: relative;
+  font-size: 16px;
+  line-height: 25px;
+  padding-left: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.track-item:hover {
+  opacity: 1;
+  text-shadow: 0px 0px 5px white;
+  transition: 0.5s ease-in-out;
+}
+
+.track-item::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 900;
+}
+
+.track-item.active {
+  opacity: 1;
+  text-shadow: 0px 0px 10px white;
+}
+
+/***************************    weather   *******************************/
+.weather {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  color: #fff;
+}
+
+input.weather-city {
+  font-size: 20px;
+  line-height: 24px;
+  padding: 5px;
+  border-bottom: 1px solid #fff;
+}
+
+.weather-icon {
+  font-size: 44px;
+}
+
+.weather-description {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 12px;
+}
+
+.temperature,
+.description,
+.weather-wind,
+.humidity {
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.weather-error {
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  margin-top: 40px;
+  color: #fff;
+
+}
+
+.display-none {
+  display: none;
+}
+
+@media screen and (max-width:555px) {
+
+  /*** player ***/
+  .player {
+    width: 70%;
+    margin-bottom: 10px;
+  }
+
+  #track-progress,
+  .player-volume,
+  .player-buttons {
+    align-self: center;
+    width: 70%;
+  }
+
+  .player-buttons {
+    width: 50%;
+  }
+
+  .player-tracks {
+    align-self: center;
+  }
+
+  /* weather*/
+  .weather {
+    width: 70%;
+    order: -1;
+    margin-bottom: 10px;
+  }
+
+  input.weather-city {
+    text-align: center;
+    align-self: center;
+    width: 50%;
+  }
+  .weather-error {
+    align-self: center;
+    margin-bottom: 10px;
+  }
+
+  .weather-description {
+    width: 70%;
+  }
+}
