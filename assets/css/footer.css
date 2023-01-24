@@ -24,6 +24,7 @@ footer {
 .quote-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
 }
@@ -34,6 +35,27 @@ footer {
   color: aliceblue;
   font-size: 16px;
 }
-.quote{
-  line-height: 40px;
+
+.quote {
+  margin-bottom: 12px;
+  text-align: center;
+}
+/* @media screen and (max-width:580px) {
+  .quote,
+  .quote-autor {
+    font-size: 12px;
+  }
+} */
+
+@media screen and (max-width:420px) {
+  .quote-reload {
+    width: 22px;
+    height: 22px;
+    background-size: 22px 22px;
+    margin-bottom: 10px;
+  }
+  .quote,
+  .quote-autor {
+    font-size: 10px;
+  }
 }
