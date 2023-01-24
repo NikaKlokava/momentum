@@ -56,11 +56,9 @@ input.name {
   .time {
     font-size: 75px
   }
-
 }
 
 @media screen and (max-width:555px) {
-
   .date {
     font-size: 16px;
     line-height: 40px;
@@ -70,4 +68,13 @@ input.name {
     font-size: 55px
   }
 
+  .button-slide {
+    background-size: 40px 40px;
+  }
+}
+
+@media screen and (max-width:395px) {
+  .button-slide {
+    background-size: 27px 40px;
+  }
 }

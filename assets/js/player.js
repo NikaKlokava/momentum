@@ -10,13 +10,14 @@ async function loadTrackList() {
     "https://raw.githubusercontent.com/NikaKlokava/momentum-audio/main/index.json";
   try {
     const promise = await fetch(url);
-    const data = await promise.json();
     if (promise.ok) {
+      const data = await promise.json();
       onTracksLoadSuccess(data);
     } else {
       onTracksLoadFailed();
     }
   } catch (err) {
+    onTracksLoadFailed(err);
     console.log("Error!!!", err);
   }
 }
@@ -38,8 +39,8 @@ function onTracksLoadSuccess(data) {
   loadTrack();
 }
 
-function onTracksLoadFailed(err) {
-  console.error("onTracksLoadFailed"); //  to do
+function onTracksLoadFailed() {
+  console.error("onTracksLoadFailed");
 }
 
 function formatTime(seconds) {
