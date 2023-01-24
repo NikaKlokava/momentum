@@ -1,0 +1,61 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  align-self: flex-end;
+}
+
+.quote-reload {
+  width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+  margin-bottom: 20px;
+  opacity: .8;
+  cursor: pointer;
+  transition: .3s;
+  background-image: url(../svg/reload.svg);
+}
+
+.quote-reload:hover {
+  opacity: 1;
+}
+
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.quote,
+.quote-autor {
+  font-family: Nunito, sans-serif;
+  color: aliceblue;
+  font-size: 16px;
+}
+
+.quote {
+  margin-bottom: 12px;
+  text-align: center;
+}
+/* @media screen and (max-width:580px) {
+  .quote,
+  .quote-autor {
+    font-size: 12px;
+  }
+} */
+
+@media screen and (max-width:420px) {
+  .quote-reload {
+    width: 22px;
+    height: 22px;
+    background-size: 22px 22px;
+    margin-bottom: 10px;
+  }
+  .quote,
+  .quote-autor {
+    font-size: 10px;
+  }
+}
