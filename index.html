@@ -22,10 +22,8 @@
     <div class="player">
       <div class="player-progress-bar">
         <div class="track" id="current-track">Aqua Caelestis</div>
-        <div class="track-progress">
-          <div class="track-progress-duration"></div>
-        </div>
-        <div class="time-progress"><span id="start-time">0:00</span> / <span id="current-time"></span></div>
+        <input type="range" id="track-progress" value="0" min="0" max="1" step="0.01">
+        <div class="time-progress"><span id="start-time"></span> / <span id="current-time"></span></div>
       </div>
       <div class="player-buttons">
         <button class="button prev-track" id="previous-button"></button>
