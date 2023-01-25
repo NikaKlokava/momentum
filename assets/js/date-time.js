@@ -95,16 +95,6 @@ function updateBackgroundImage() {
   img.onload = () => {
     body.style.backgroundImage = `url(${img.getAttribute("src")})`;
   };
-
-  // (async function () {
-  //   let blob = await fetch(imgUrl).then((r) => r.blob());
-  //   let dataUrl = await new Promise((resolve) => {
-  //     let reader = new FileReader();
-  //     reader.onload = () => resolve(reader.result);
-  //     reader.readAsDataURL(blob);
-  //   });
-  //   body.style.backgroundImage = `url(${dataUrl})`;
-  // })();
 }
 
 function handlePrevArrowClick() {
