@@ -114,13 +114,16 @@
 
 /*** player-tracks ***/
 .player-tracks {
-  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 110px;
+  margin-top: 15px;
 }
 
 .track-item {
   position: relative;
   font-size: 16px;
-  line-height: 25px;
   padding-left: 20px;
   cursor: pointer;
   opacity: 0.8;
@@ -132,12 +135,19 @@
   transition: 0.5s ease-in-out;
 }
 
+:root {
+  --backgroundImage: url(../svg/play.svg);
+}
+
 .track-item::before {
-  content: "\2713";
+  content: "";
   position: absolute;
   left: 0;
-  top: 0;
-  font-weight: 900;
+  top: 3px;
+  width: 15px;
+  height: 15px;
+  background-size: 15px 15px;
+  background-image: var(--backgroundImage);
 }
 
 .track-item.active {
