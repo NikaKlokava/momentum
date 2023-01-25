@@ -44,6 +44,9 @@ footer {
 }
 
 @media screen and (max-width:420px) {
+  footer {
+    align-self: center;
+  }
   .quote-reload {
     width: 22px;
     height: 22px;

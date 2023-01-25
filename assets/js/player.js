@@ -5,6 +5,9 @@ let isPaused = true; // current audio playing state
 
 const DEFAULT_VOLUME = 1;
 
+const PLAY_ICON_URL = "../svg/play.svg";
+const PAUSE_ICON_URL = "../svg/pause.svg";
+
 async function loadTrackList() {
   const url =
     "https://raw.githubusercontent.com/NikaKlokava/momentum-audio/main/index.json";
@@ -125,6 +128,8 @@ function startTrack() {
 
   const iconPlayPause = document.getElementById("play");
   iconPlayPause.classList.add("active");
+
+  changeTrackIcon(currentIndex, PAUSE_ICON_URL);
 }
 
 function pauseTrack() {
@@ -133,6 +138,8 @@ function pauseTrack() {
 
   const iconPlayPause = document.getElementById("play");
   iconPlayPause.classList.remove("active");
+
+  changeTrackIcon(currentIndex, PLAY_ICON_URL);
 }
 
 function handlePlayPausePress() {
@@ -146,6 +153,7 @@ function handlePlayPausePress() {
 function handleTrackInPlaylistPress(index) {
   const isCurrentTrackNotLoaded = currentIndex !== index;
   if (isCurrentTrackNotLoaded) {
+    changeTrackIcon(currentIndex, PLAY_ICON_URL);
     // if it is other track
     currentIndex = index;
     loadTrack();
@@ -157,7 +165,14 @@ function handleTrackInPlaylistPress(index) {
   }
 }
 
+function changeTrackIcon(trackIndex, url) {
+  const trackItemElems = document.getElementsByClassName("track-item");
+  const currentTrack = trackItemElems[trackIndex];
+  currentTrack.style.setProperty("--backgroundImage", `url(${url})`);
+}
+
 function handlePrevPress() {
+  changeTrackIcon(currentIndex, PLAY_ICON_URL);
   const isFirstTrackLoaded = currentIndex === 0;
   currentIndex = isFirstTrackLoaded ? tracks.length - 1 : currentIndex - 1;
   loadTrack();
@@ -165,6 +180,7 @@ function handlePrevPress() {
 }
 
 function handleNextPress() {
+  changeTrackIcon(currentIndex, PLAY_ICON_URL);
   const isLastTrackLoaded = currentIndex == tracks.length - 1;
   currentIndex = isLastTrackLoaded ? 0 : currentIndex + 1;
   loadTrack();
