@@ -1,7 +1,13 @@
 # <p align="center"> *Momentum* </p>
 ----
 ### Project
-- 🏙️ Mometnum;
+
+- Mometnum is an analogue of the Chrome online store application of the same name.
+- The application shows the time and the username. 
+- The background image and greeting change depending on the time of day.
+- The application has a clock, image slider, weather widgets, audio player, quote of the day. 
+- Local storage is used to store the username and locality.
+
 ----
 ### Learning goals 
 - ✅ Fetch
